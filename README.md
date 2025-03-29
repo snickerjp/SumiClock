@@ -90,37 +90,35 @@ docker compose build
 docker build -t sumiclock .
 ```
 
-### Testing
+## Testing
 
-Run tests using Docker:
+Tests can be run using the dedicated test environment with Docker Compose:
+
 ```bash
-# Run tests in a temporary container
-docker compose run --rm app python -m pytest
+# Run all tests
+docker compose -f docker-compose.test.yml up --build test
+
+# Run specific test file
+docker compose -f docker-compose.test.yml run --rm test pytest tests/test_api.py -v
+
+# Run specific test case
+docker compose -f docker-compose.test.yml run --rm test pytest tests/test_api.py::test_get_clock_image -v
 ```
 
-## API Endpoints
+The test environment includes:
+- Isolated Redis instance for testing
+- Proper Python path configuration
+- Automatic cleanup of test artifacts
 
-- `GET /clock.png`: Returns the current time as a PNG image
-  - Response: PNG image (1448x1072, grayscale)
-  - Cache: Redis-based caching (30 seconds)
+### Available Tests
 
-## E-paper Device Setup
+- `test_api.py`: Tests for the FastAPI endpoints
+  - `test_get_clock_image`: Validates image generation and response
+  - `test_error_handling`: Verifies proper error responses
 
-### Kindle
-
-1. Enable USB Networking on your Kindle
-2. Create a cron job or script to fetch the clock image:
-```bash
-wget -O /mnt/us/screensaver/clock.png http://your-server:8000/clock.png
-```
-
-### Kobo
-
-1. Install KOReader or similar customization
-2. Set up a periodic task to fetch the clock image:
-```bash
-wget -O /mnt/onboard/.screensaver/clock.png http://your-server:8000/clock.png
-```
+- `test_clock_generator.py`: Tests for the clock image generation
+  - `test_image_creation`: Validates image dimensions and format
+  - `test_timezone_handling`: Verifies timezone conversion
 
 ## Contributing
 

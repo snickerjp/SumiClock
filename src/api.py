@@ -1,11 +1,11 @@
 from fastapi import FastAPI, Response, HTTPException
 from fastapi.responses import StreamingResponse
 import io
-from clock_generator import ClockGenerator
+from src.clock_generator import ClockGenerator
 import redis
 from datetime import datetime, timedelta
 import logging
-from config import config
+from src.config import config
 
 logger = logging.getLogger(__name__)
 

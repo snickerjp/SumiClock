@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 import pytz
 import logging
-from config import config
+from src.config import config
 
 logger = logging.getLogger(__name__)
 

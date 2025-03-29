@@ -1,0 +1,26 @@
+services:
+  test:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis-test
+      - REDIS_PORT=6379
+      - PYTHONPATH=/app
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./config.yaml:/app/config.yaml
+    command: pytest tests/ -v
+    depends_on:
+      redis-test:
+        condition: service_healthy
+
+  redis-test:
+    image: valkey/valkey:8
+    command: redis-server --loglevel warning
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
