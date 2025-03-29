@@ -1,0 +1,11 @@
+redis:
+  host: redis
+  port: 6379
+  cache_expire_seconds: 30
+
+clock:
+  timezone: Asia/Tokyo
+  width: 1448
+  height: 1072
+  font_size: 200
+  font_path: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
