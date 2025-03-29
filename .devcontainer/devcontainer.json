@@ -1,0 +1,40 @@
+{
+    "name": "SumiClock Development",
+    "dockerFile": "../Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "ms-python.pylint",
+                "ms-azuretools.vscode-docker",
+                "ms-python.pytest-adapter",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.formatting.provider": "black",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.testing.pytestEnabled": true,
+                "python.testing.unittestEnabled": false,
+                "python.testing.nosetestsEnabled": false,
+                "editor.formatOnSave": true,
+                "editor.rulers": [88],
+                "files.trimTrailingWhitespace": true,
+                "files.insertFinalNewline": true
+            }
+        }
+    },
+    "forwardPorts": [8000, 6379],
+    "postCreateCommand": "pip install --user black pylint pytest",
+    "remoteUser": "sumiclock",
+    "updateRemoteUserUID": true,
+    "runArgs": ["--network=sumiclock-network"],
+    "mounts": [
+        "source=${localWorkspaceFolder}/src,target=/app/src,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/tests,target=/app/tests,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/config.yaml,target=/app/config.yaml,type=bind,consistency=cached"
+    ]
+}
