@@ -26,7 +26,7 @@ http://localhost:8000/clock.png
 
 ## Configuration
 
-All configuration is managed through `config.yaml`:
+Configuration can be managed through both `config.yaml` and environment variables:
 
 ```yaml
 redis:
@@ -40,6 +40,23 @@ clock:
   height: 1072          # Image height
   font_size: 200
   font_path: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+```
+
+### Environment Variables
+
+All configuration options can be overridden using environment variables:
+
+- `SUMICLOCK_REDIS_HOST`: Redis server hostname (default: "redis")
+- `SUMICLOCK_REDIS_PORT`: Redis server port (default: 6379)
+- `SUMICLOCK_REDIS_CACHE_EXPIRE_SECONDS`: Cache expiration time in seconds (default: 30)
+- `SUMICLOCK_TIMEZONE`: Clock timezone (default: "UTC")
+- `LOG_LEVEL`: Application log level (default: "INFO")
+
+Example using environment variables:
+```bash
+docker compose up -d \
+  -e SUMICLOCK_TIMEZONE=America/New_York \
+  -e LOG_LEVEL=DEBUG
 ```
 
 ## Project Structure

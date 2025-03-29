@@ -4,12 +4,15 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      - SUMICLOCK_REDIS_HOST=redis
+      - SUMICLOCK_REDIS_PORT=6379
+      - SUMICLOCK_TIMEZONE=${SUMICLOCK_TIMEZONE:-Asia/Tokyo}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     volumes:
-      - ./src:/app/src  # Mount source code for development hot-reload
+      - ./src:/app/src
     networks:
       - sumiclock-network
 

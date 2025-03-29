@@ -7,6 +7,8 @@ services:
       - REDIS_HOST=redis-test
       - REDIS_PORT=6379
       - PYTHONPATH=/app
+      - LOG_LEVEL=DEBUG
+      - SUMICLOCK_TIMEZONE=UTC
     volumes:
       - ./src:/app/src
       - ./tests:/app/tests
