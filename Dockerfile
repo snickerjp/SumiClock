@@ -1,5 +1,8 @@
 FROM python:3.11-slim
 
+# Create a non-root user
+RUN groupadd -r sumiclock && useradd -r -g sumiclock sumiclock
+
 WORKDIR /app
 
 # Install required packages (including fonts)
@@ -19,6 +22,12 @@ COPY config.yaml .
 
 # Set font path
 ENV FONT_PATH=/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+
+# Set proper permissions
+RUN chown -R sumiclock:sumiclock /app
+
+# Switch to non-root user
+USER sumiclock
 
 # Expose port
 EXPOSE 8000
