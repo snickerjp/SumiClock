@@ -1,12 +1,19 @@
 import pytest
 from datetime import datetime
+import sys
+import os
 import pytz
 from PIL import Image
-from src.clock_generator import ClockGenerator
+
+# Add src directory to path for imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from clock_generator import ClockGenerator
 
 @pytest.fixture
 def generator():
-    return ClockGenerator()
+    # Use fixed timezone for tests
+    return ClockGenerator(timezone="UTC")
 
 def test_image_creation(generator):
     """Test if the clock image is created with correct dimensions"""
@@ -17,7 +24,8 @@ def test_image_creation(generator):
 
 def test_timezone_handling():
     """Test if timezone is handled correctly"""
-    generator = ClockGenerator()
+    test_timezone = "UTC"
+    generator = ClockGenerator(timezone=test_timezone)
     image = generator.create_clock_image()
     
     # Save test image temporarily

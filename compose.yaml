@@ -8,11 +8,13 @@ services:
       - SUMICLOCK_REDIS_PORT=6379
       - SUMICLOCK_TIMEZONE=${SUMICLOCK_TIMEZONE:-Asia/Tokyo}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - PYTHONPATH=/app
     depends_on:
       redis:
         condition: service_healthy
     volumes:
       - ./src:/app/src
+      - ./config.yaml:/app/config.yaml
     networks:
       - sumiclock-network
 

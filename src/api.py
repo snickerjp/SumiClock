@@ -1,11 +1,11 @@
 from fastapi import FastAPI, Response, HTTPException
 from fastapi.responses import StreamingResponse
 import io
-from src.clock_generator import ClockGenerator
-import redis
 from datetime import datetime, timedelta
 import logging
-from src.config import config
+import redis
+from config import config
+from clock_generator import ClockGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -29,9 +29,10 @@ except (redis.ConnectionError, redis.TimeoutError) as e:
     redis_client = None
 
 def get_cache_key():
-    """Generate cache key based on current time"""
+    """Generate cache key based on current time and timezone"""
     current_minute = datetime.now().strftime("%Y%m%d%H%M")
-    return f"clock_image:{current_minute}"
+    timezone = config['clock']['timezone']
+    return f"clock_image:{timezone}:{current_minute}"
 
 def get_cached_image():
     """Get cached image from Redis"""

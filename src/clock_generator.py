@@ -5,18 +5,19 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 import pytz
 import logging
-from src.config import config
+from config import config
 
 logger = logging.getLogger(__name__)
 
 class ClockGenerator:
-    def __init__(self):
+    def __init__(self, timezone=None):
         clock_config = config['clock']
         self.width = clock_config['width']
         self.height = clock_config['height']
         self.font_size = clock_config['font_size']
         self.font_path = clock_config['font_path']
-        self.timezone = pytz.timezone(clock_config['timezone'])
+        # Allow timezone override for testing
+        self.timezone = pytz.timezone(timezone or clock_config['timezone'])
         logger.info(f"Clock generator initialized with timezone: {self.timezone}")
         
     def create_clock_image(self) -> Image.Image:
