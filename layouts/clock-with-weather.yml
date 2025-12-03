@@ -1,0 +1,59 @@
+# 天気情報付き時計レイアウト設定
+template_name: "clock-with-weather.svg"
+width: 1448
+height: 1072
+
+time_element:
+  placeholder: "{{TIME}}"
+  x: 900
+  y: 200
+  font_family: "Noto Sans CJK"
+  font_size: 72
+  color: "#000000"
+  align: "start"
+
+date_element:
+  placeholder: "{{DATE}}"
+  x: 724
+  y: 350
+  font_family: "Noto Sans CJK"
+  font_size: 36
+  color: "#000000"
+  align: "center"
+
+# 追加の動的要素
+temperature_element:
+  placeholder: "{{TEMP}}"
+  x: 300
+  y: 580
+  font_family: "Noto Sans CJK"
+  font_size: 64
+  color: "#000000"
+  align: "start"
+
+humidity_element:
+  placeholder: "{{HUMIDITY}}"
+  x: 800
+  y: 580
+  font_family: "Noto Sans CJK"
+  font_size: 64
+  color: "#000000"
+  align: "start"
+
+power_element:
+  placeholder: "{{POWER}}"
+  x: 724
+  y: 850
+  font_family: "Noto Sans CJK"
+  font_size: 80
+  color: "#000000"
+  align: "center"
+
+timestamp_element:
+  placeholder: "{{TIMESTAMP}}"
+  x: 724
+  y: 1000
+  font_family: "Noto Sans CJK"
+  font_size: 20
+  color: "#666666"
+  align: "center"

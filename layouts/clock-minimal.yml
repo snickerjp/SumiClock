@@ -1,0 +1,22 @@
+# ミニマルな時計レイアウト設定
+template_name: "clock-minimal.svg"
+width: 1448
+height: 1072
+
+time_element:
+  placeholder: "{{TIME}}"
+  x: 724
+  y: 400
+  font_family: "Noto Sans CJK"
+  font_size: 180
+  color: "#000000"
+  align: "center"
+
+date_element:
+  placeholder: "{{DATE}}"
+  x: 724
+  y: 500
+  font_family: "Noto Sans CJK"
+  font_size: 48
+  color: "#000000"
+  align: "center"

@@ -1,0 +1,15 @@
+{
+  "name": "Run Tests on Save",
+  "description": "Automatically run pytest when Python files are saved to catch issues early",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "**/*.py"
+  },
+  "action": {
+    "type": "executeCommand",
+    "command": "pytest tests/ -v --tb=short",
+    "workingDirectory": "${workspaceFolder}",
+    "showOutput": true
+  },
+  "enabled": true
+}

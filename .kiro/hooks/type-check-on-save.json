@@ -1,0 +1,15 @@
+{
+  "name": "Type Check on Save",
+  "description": "Run mypy type checking when Python files in src/ are saved",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "src/**/*.py"
+  },
+  "action": {
+    "type": "executeCommand",
+    "command": "mypy ${file}",
+    "workingDirectory": "${workspaceFolder}",
+    "showOutput": true
+  },
+  "enabled": true
+}

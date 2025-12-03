@@ -1,0 +1,13 @@
+{
+  "name": "Docker Health Check",
+  "description": "Remind to check Docker services health when docker-compose files are modified",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "**/docker-compose*.yml"
+  },
+  "action": {
+    "type": "sendMessage",
+    "message": "Docker Compose configuration changed. Consider running: docker compose ps && docker compose logs --tail=50"
+  },
+  "enabled": true
+}
