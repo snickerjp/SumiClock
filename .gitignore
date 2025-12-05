@@ -23,6 +23,7 @@ var/
 # Virtual Environment
 venv/
 ENV/
+.env
 
 # IDE
 .idea/
@@ -30,10 +31,21 @@ ENV/
 *.swp
 *.swo
 
+# Docker
+.docker
+.dockerignore
+
 # OS
 .DS_Store
 Thumbs.db
 
 # Application specific
 *.png
-!example.png  # Allow example image in repository
+!example.png
+config.yaml
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/weather_icons/test_output/

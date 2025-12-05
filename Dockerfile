@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Create a non-root user
 RUN groupadd -r sumiclock && useradd -r -g sumiclock sumiclock
@@ -8,7 +8,9 @@ WORKDIR /app
 # Install required packages (including fonts)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    fonts-noto-cjk && \
+    fonts-noto-cjk \
+    imagemagick \
+    librsvg2-bin && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

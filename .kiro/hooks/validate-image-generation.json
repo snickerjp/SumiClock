@@ -1,0 +1,15 @@
+{
+  "name": "Validate Clock Image Generation",
+  "description": "Test clock image generation after changes to clock_generator.py",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "src/clock_generator.py"
+  },
+  "action": {
+    "type": "executeCommand",
+    "command": "python -c \"from src.clock_generator import ClockGenerator; g = ClockGenerator(); img = g.create_clock_image(); print(f'✓ Image generated: {img.size} {img.mode}')\"",
+    "workingDirectory": "${workspaceFolder}",
+    "showOutput": true
+  },
+  "enabled": true
+}
