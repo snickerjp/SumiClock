@@ -1,0 +1,15 @@
+{
+  "name": "Format Code on Save",
+  "description": "Automatically format Python code with black and isort when files are saved",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "**/*.py"
+  },
+  "action": {
+    "type": "executeCommand",
+    "command": "black --line-length 100 ${file} && isort --profile black --line-length 100 ${file}",
+    "workingDirectory": "${workspaceFolder}",
+    "showOutput": false
+  },
+  "enabled": true
+}

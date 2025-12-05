@@ -1,0 +1,13 @@
+{
+  "name": "Update Requirements Reminder",
+  "description": "Remind to update requirements.txt when pyproject.toml dependencies change",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "pyproject.toml"
+  },
+  "action": {
+    "type": "sendMessage",
+    "message": "pyproject.toml updated. Remember to sync requirements.txt if dependencies changed."
+  },
+  "enabled": true
+}

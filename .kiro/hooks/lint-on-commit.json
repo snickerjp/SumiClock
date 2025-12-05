@@ -1,0 +1,13 @@
+{
+  "name": "Lint Before Commit",
+  "description": "Run flake8 linting before committing to ensure code quality",
+  "trigger": {
+    "type": "onMessage",
+    "pattern": "commit|push"
+  },
+  "action": {
+    "type": "sendMessage",
+    "message": "Please run: flake8 src/ tests/ to check for linting issues before committing"
+  },
+  "enabled": true
+}

@@ -1,0 +1,22 @@
+redis:
+  host: redis
+  port: 6379
+  cache_expire_seconds: 30
+
+clock:
+  timezone: "Asia/Tokyo"
+  width: 1448
+  height: 1072
+  font_size: 200
+  date_font_size: 100
+  weather_font_size: 120
+  font_path: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+  display_weather: false
+  weather_api_key: "your_openweathermap_api_key_here"
+  weather_city: "Tokyo"
+  weather_units: "metric"
+  dark_mode_start: 18  # 6 PM
+  dark_mode_end: 6     # 6 AM
+  portrait_mode: false  # Set to true for vertical/portrait layout
+  use_templates: true   # Set to false to use traditional rendering
+  template_dir: "./templates"  # Path to SVG templates directory

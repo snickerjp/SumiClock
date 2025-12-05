@@ -1,11 +1,11 @@
-Pillow==10.2.0
-black==24.2.0
-pylint==3.0.3
-fastapi==0.110.0
-uvicorn==0.27.1
-python-multipart==0.0.9
-redis==5.0.3
-PyYAML==6.0.1
-pytz==2024.1
-pytest==8.0.0
-httpx==0.27.0  # For FastAPI testing
+fastapi>=0.115.0,<0.123.0
+uvicorn>=0.30.0,<0.35.0
+pillow>=10.4.0,<11.0.0
+redis>=5.0.0,<6.0.0
+python-dotenv>=1.0.0,<2.0.0
+pyyaml>=6.0.1,<7.0.0
+pytz>=2024.1
+requests>=2.32.0,<3.0.0
+cairosvg>=2.7.0,<3.0.0
+pytest>=8.0.0,<9.0.0
+httpx>=0.27.0,<0.28.0
