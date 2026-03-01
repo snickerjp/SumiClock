@@ -55,7 +55,7 @@ services:
     command: python /app/tools/generate_layout_templates.py
     
   redis-test:
-    image: valkey/valkey:8
+    image: valkey/valkey:9
     command: redis-server --loglevel warning
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
