@@ -98,7 +98,8 @@ def test_invalid_orientation_parameter(client):
     assert response.status_code == 422  # Unprocessable Entity for invalid enum value
     
     # The response should contain validation error information
-    assert "validation error" in response.text.lower()
+    detail = response.json()["detail"]
+    assert detail[0]["loc"] == ["query", "orientation"]
 
 def test_error_handling(client):
     """
