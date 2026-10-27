@@ -1,4 +1,4 @@
-FROM python:3.14.8-slim
+FROM python:3.15.2-slim
 
 # Create a non-root user
 RUN groupadd -r sumiclock && useradd -r -g sumiclock sumiclock
